@@ -10,7 +10,6 @@ namespace TestByndy
             {
                 var readConsole = ReadConsole();
 
-
                 SumTwoMinimal twoMinimal = new SumTwoMinimal();
 
                 var sum = twoMinimal.SumTwoMinimalMethod(readConsole);
@@ -23,20 +22,27 @@ namespace TestByndy
                 Console.WriteLine(e);
                 throw;
             }
-
         }
 
-
-        private static IEnumerable<int> ReadConsole()
+        private static IEnumerable<int>? ReadConsole()
         {
-            IEnumerable<int> value;
-            Console.WriteLine("Введите массив, через пробел:");
+            IEnumerable<int>? value;
+
+            Console.WriteLine("\nМассив не долже содержать символы." +
+                              "\nМассив не должен быть пуст." +
+                              "\nЧисла должны быть целыми." +
+                              "\nМассив должен содержать более 2-ух элементов." +
+                              "\nВведите массив, через пробел:");
+
             var read = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(read) || read.Any(char.IsLetter) || read.Any(char.IsDigit) || read.Length > 2)
+            if (!string.IsNullOrEmpty(read) || read.Any(char.IsLetter) || read.Length < 2)
             {
                 Console.WriteLine(
-                    "\nМассив не долже содержать символы.\nЧисла должны быть целыми.\nМассив не должен быть пуст.\nМассив должен содержать более 2-ух элементов");
+                    "\nМассив не долже содержать символы." +
+                    "\nМассив не должен быть пуст." +
+                    "\nЧисла должны быть целыми." +
+                    "\nМассив должен содержать более 2-ух элементов.");
                 ReadConsole();
             }
 
