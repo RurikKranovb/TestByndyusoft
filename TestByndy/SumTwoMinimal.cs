@@ -8,9 +8,16 @@ namespace TestByndy
 {
    public class SumTwoMinimal
     {
-        public int SumTwoMinimalMethod(IEnumerable<int> readConsole)
+        public int SumTwoMinimalMethod(IEnumerable<int>? array)
         {
-            var sortedArray = readConsole.OrderBy(x => x).Take(2).ToArray();
+            if (array == null || array.Count() < 2)
+            {
+                throw new ArgumentException("Массив должен содержать минимум 2 элемента");
+            }
+
+            var sortedArray = array.OrderBy(x => x).Take(2).ToArray();
+
+
             return sortedArray[0] + sortedArray[1];
 
         }
